@@ -1,11 +1,49 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+//Leer la coleccion seteada desde config.ts
+const books = await getCollection("books"); // Viene de books/config.ts
+// books[0].slug SLUG es el titulo de cada archivo
+console.log(books[0].slug)
+
+
 ---
 
 <Layout>
-	<Welcome />
+	<main>
+		<h1>Bienvenido libros</h1>
+		<h2></h2>
+	</main>
+
+	<section>
+		<h1>libros</h1>
+		<div>
+			{
+				books.map((book:any) => {
+					
+				
+					const { slug, data } = book
+					const { title, author, img, readtime, description, buy } = data
+					console.log(img)
+					return (
+						<article>
+							<h2>{title}</h2>
+							<h3>{author}</h3>
+							<img src={`../../public/${img}`} alt={`${slug}`} />
+							<h3>{readtime}</h3>
+							<h5>{description}</h5>
+							<h1><a href="">{buy.spain}</a></h1>
+							<h1><a href="">{buy.usa}</a></h1>
+
+						</article>
+					)
+				})
+
+			}
+		</div>
+	</section>
 </Layout>
+
+
