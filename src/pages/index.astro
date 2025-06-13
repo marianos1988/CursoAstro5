@@ -26,12 +26,12 @@ console.log(books[0].slug)
 				
 					const { slug, data } = book
 					const { title, author, img, readtime, description, buy } = data
-					console.log(img)
+
 					return (
 						<article>
 							<h2>{title}</h2>
 							<h3>{author}</h3>
-							<img src={`../../public/${img}`} alt={`${slug}`} />
+							<a href={`/libro/${slug}`}><img src={`../../public/${img}`} alt={`${slug}`} /></a>
 							<h3>{readtime}</h3>
 							<h5>{description}</h5>
 							<h1><a href="">{buy.spain}</a></h1>

@@ -1,0 +1,41 @@
+---
+
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+
+//Devuelve tla funciona todas las rutas estaticas que queres que responda
+export async function getStaticPaths() {
+
+    const books = await getCollection("books"); // TRaemos la coleccion y luego mapeamos la info
+
+
+    return books.map(
+
+        (book) => ({
+            params: { id: book.slug },
+            props: book 
+        })
+    )
+
+}
+
+const { data }:any = Astro.props;
+const { id } = Astro.params;
+
+
+const { title, author, img, buy } = data;
+
+
+const { usa, spain } = buy; 
+
+---
+
+<Layout title={`${id}`}>
+    <h1>{title}</h1>
+    <h2>{author}</h2>
+    <img src={`../../public/${img}`} alt={id}>
+    <a href={`${usa}`}>{usa}</a>
+    <a href={`${spain}`}>{spain}</a>
+
+</Layout>
