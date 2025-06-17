@@ -6,7 +6,7 @@ import { getCollection } from 'astro:content';
 //Leer la coleccion seteada desde config.ts
 const books = await getCollection("books"); // Viene de books/config.ts
 // books[0].slug SLUG es el titulo de cada archivo
-console.log(books[0].slug)
+
 
 
 ---
@@ -46,4 +46,12 @@ console.log(books[0].slug)
 	</section>
 </Layout>
 
+
+<style>
+
+    img {
+        width: 300px;
+        height: 300px;
+    }
+</style>
 

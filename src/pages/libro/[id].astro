@@ -1,6 +1,6 @@
 ---
 
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content"; // REnder es para renderizar el contenido del archivo MD
 import Layout from "../../layouts/Layout.astro";
 
 
@@ -8,7 +8,6 @@ import Layout from "../../layouts/Layout.astro";
 export async function getStaticPaths() {
 
     const books = await getCollection("books"); // TRaemos la coleccion y luego mapeamos la info
-
 
     return books.map(
 
@@ -26,16 +25,40 @@ const { id } = Astro.params;
 
 const { title, author, img, buy } = data;
 
+const { usa, spain } = buy;
 
-const { usa, spain } = buy; 
+
+
+const { Content } = await render(Astro.props);
+console.log(data)
+
 
 ---
+
 
 <Layout title={`${id}`}>
     <h1>{title}</h1>
     <h2>{author}</h2>
     <img src={`../../public/${img}`} alt={id}>
+    <br>
     <a href={`${usa}`}>{usa}</a>
+    <br>
     <a href={`${spain}`}>{spain}</a>
+    <div class="content">
+<br>
+        <Content></Content>
+    </div>
+  
 
 </Layout>
+
+<style>
+    .content {
+        width: 100%;
+        display: flex;
+    }
+    img {
+        width: 300px;
+        height: 300px;
+    }
+</style>
