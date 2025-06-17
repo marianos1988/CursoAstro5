@@ -55,9 +55,11 @@ const { Content } = await render(Astro.props); // REnderiza el contenido de los 
     {
         SHOW_BUY_BUTTON && (
                 <br>
-    <a href={`${spain}`}>{spain}</a>
+            <a href={`${spain}`}>{spain}</a>
         )
     }
+
+    <h3 id="score"></h3>
    
 
     <div class="content">
@@ -78,3 +80,11 @@ const { Content } = await render(Astro.props); // REnderiza el contenido de los 
         height: 300px;
     }
 </style>
+
+<script>
+    import { SCORE_API_ENDPOINT } from "astro:env/client";
+
+    const scoreElement:any = document.querySelector("#score");
+    scoreElement.innerHTML = `Puntuacion: ${SCORE_API_ENDPOINT}`
+
+</script>
