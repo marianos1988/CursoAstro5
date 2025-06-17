@@ -1,7 +1,7 @@
 ---
 title: Aprendiendo Reactjs / Nextjs
 author: El Campeon Goliath
-decription: "Bomba mal el libreo este"
+description: "Bomba mal el libreo este"
 img: libro3.jpg
 toc: true
 readtime: 444

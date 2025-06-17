@@ -1,7 +1,7 @@
 ---
 title: Aprendiendo cdGit Github
 author: Miguel Angel Duran
-decription: "Sarasaaaaaa"
+description: "Sarasaaaaaa"
 img: libro1.jpg
 toc: true
 readtime: 224

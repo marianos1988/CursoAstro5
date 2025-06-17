@@ -1,7 +1,7 @@
 ---
 title: Aprendiendo ASTRO
 author: AStrologico y Astronautico
-decription: "Lpo mejor para diseño web"
+description: "Lpo mejor para diseño web"
 img: libro4.jpg
 toc: true
 readtime: 555

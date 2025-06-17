@@ -1,7 +1,9 @@
 ---
 
 import { getCollection, render } from "astro:content"; // REnder es para renderizar el contenido del archivo MD
+import { SHOW_BUY_BUTTON } from "astro:env/server"; // Importar variable de entorno
 import Layout from "../../layouts/Layout.astro";
+
 
 
 //Devuelve tla funciona todas las rutas estaticas que queres que responda
@@ -45,11 +47,21 @@ const { Content } = await render(Astro.props); // REnderiza el contenido de los 
         alt={id}
     >
     <br>
-    <a href={`${usa}`}>{usa}</a>
-    <br>
+    {
+        SHOW_BUY_BUTTON && (
+            <a href={`${usa}`}>{usa}</a>
+        )
+    }
+    {
+        SHOW_BUY_BUTTON && (
+                <br>
     <a href={`${spain}`}>{spain}</a>
+        )
+    }
+   
+
     <div class="content">
-<br>
+        <br>
         <Content></Content>
     </div>
   

@@ -1,7 +1,7 @@
 ---
 title: Aprendiendo Javascript
 author: Da Vinci KPO
-decription: Es un libro que vas aprender javascript"
+description: "Es un libro que vas aprender javascript"
 img: libro2.jpg
 toc: true
 readtime: 500
