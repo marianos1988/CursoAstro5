@@ -29,9 +29,17 @@ const books = await getCollection("books"); // Viene de books/config.ts
 
 					return (
 						<article>
-							<h2>{title}</h2>
+							<h2
+								transition:name= {`title-${slug}`} 
+							>{title}</h2>
 							<h3>{author}</h3>
-							<a href={`/libro/${slug}`}><img src={`../../public/${img}`} alt={`${slug}`} /></a>
+							<a href={`/libro/${slug}`}>
+								<img
+									transition:name= {`img-${slug}`}
+									src={`../../public/${img}`} 
+									alt={`${slug}`} 
+								/>
+							</a>
 							<h3>{readtime}</h3>
 							<h5>{description}</h5>
 							<h1><a href="">{buy.spain}</a></h1>
