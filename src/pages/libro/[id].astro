@@ -4,6 +4,7 @@ import { getCollection, render } from "astro:content"; // REnder es para renderi
 import { SHOW_BUY_BUTTON } from "astro:env/server"; // Importar variable de entorno
 import Layout from "../../layouts/Layout.astro";
 import BookScore from "../../components/BookScore.astro";
+import BuyButton from "../../components/BuyButton.astro";
 
 
 
@@ -51,22 +52,19 @@ export const prerender = true;
         alt={id}
     >
     <br>
-    {
-        SHOW_BUY_BUTTON && (
-            <a href={`${usa}`}>{usa}</a>
-        )
-    }
-    {
-        SHOW_BUY_BUTTON && (
-                <br>
-            <a href={`${spain}`}>{spain}</a>
-        )
-    }
+
+
 
    <BookScore libro={slug} server:defer >
         <h3 slot="fallback">Cargando...</h3>
    </BookScore>
     
+   {
+    SHOW_BUY_BUTTON && 
+    <BuyButton server:defer urlSpain={spain} urlUsa={usa}>
+        <h3 slot="fallback">Cargando Link...</h3>
+    </BuyButton>
+   }
 
     <div class="content">
         <br>

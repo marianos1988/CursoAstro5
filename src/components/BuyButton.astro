@@ -1,0 +1,30 @@
+---
+import { SHOW_BUY_BUTTON } from "astro:env/server"; // Importar variable de entorno
+
+// ver de que pais se conecta el usuario () con hsoting vercel
+// const country = Astro.request.headers.get("X-Vercel-IP-Country") ?? "ES"
+// const storeCountry = country === SPAIN ? "spain" : "usa" // Verifica si es de españa sino compra link de usa
+// const countryName = country === SPAIN ? "España" : "Estados Unidos"
+
+const country:any = "ES";
+// const country:any = "US";
+
+
+const { urlSpain, urlUsa } = Astro.props
+
+const url = country === "US" ? urlUsa : urlSpain
+const countryName = country === "US" ? "Estados Unidos" : "España";
+
+---
+
+
+<div>
+    {
+        SHOW_BUY_BUTTON && 
+            
+            <a href="">
+                {`Comprar desde ${countryName}: ${url}`}
+            </a>
+        
+    }
+</div>
