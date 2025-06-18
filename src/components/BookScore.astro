@@ -1,0 +1,14 @@
+---
+    // Server Island
+    import { SCORE_API_ENDPOINT } from "astro:env/server";
+
+    const { libro } = Astro.props
+
+---
+
+
+<h3 id="score">
+    {
+        `Puntuacion ${libro}: ${SCORE_API_ENDPOINT}`
+    }
+</h3>

@@ -3,6 +3,7 @@
 import { getCollection, render } from "astro:content"; // REnder es para renderizar el contenido del archivo MD
 import { SHOW_BUY_BUTTON } from "astro:env/server"; // Importar variable de entorno
 import Layout from "../../layouts/Layout.astro";
+import BookScore from "../../components/BookScore.astro";
 
 
 
@@ -32,7 +33,10 @@ const { usa, spain } = buy;
 const { Content } = await render(Astro.props); // REnderiza el contenido de los archivos Markdown
 
 
+//ESta pagina se tiene que prerenderizar
+export const prerender = true;
 
+//Cargando puntuacion se genera un fallback para traer una vez cargado lo del server island
 ---
 
 
@@ -59,8 +63,10 @@ const { Content } = await render(Astro.props); // REnderiza el contenido de los 
         )
     }
 
-    <h3 id="score"></h3>
-   
+   <BookScore libro={slug} server:defer >
+        <h3 slot="fallback">Cargando...</h3>
+   </BookScore>
+    
 
     <div class="content">
         <br>
@@ -81,10 +87,3 @@ const { Content } = await render(Astro.props); // REnderiza el contenido de los 
     }
 </style>
 
-<script>
-    import { SCORE_API_ENDPOINT } from "astro:env/client";
-
-    const scoreElement:any = document.querySelector("#score");
-    scoreElement.innerHTML = `Puntuacion: ${SCORE_API_ENDPOINT}`
-
-</script>
